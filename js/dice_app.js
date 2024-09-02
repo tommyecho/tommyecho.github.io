@@ -392,34 +392,34 @@ function makeInportForm(device) {
   }
 }
 
-function attachOutports(device) {
-  const outports = device.outports;
-  if (outports.length < 1) {
-    document
-      .getElementById("rnbo-console")
-      .removeChild(document.getElementById("rnbo-console-div"));
-    return;
-  }
+// function attachOutports(device) {
+//   const outports = device.outports;
+//   if (outports.length < 1) {
+//     document
+//       .getElementById("rnbo-console")
+//       .removeChild(document.getElementById("rnbo-console-div"));
+//     return;
+//   }
 
-  document
-    .getElementById("rnbo-console")
-    .removeChild(document.getElementById("no-outports-label"));
-  device.messageEvent.subscribe((ev) => {
-    // Ignore message events that don't belong to an outport
-    if (outports.findIndex((elt) => elt.tag === ev.tag) < 0) return;
+//   document
+//     .getElementById("rnbo-console")
+//     .removeChild(document.getElementById("no-outports-label"));
+//   device.messageEvent.subscribe((ev) => {
+//     // Ignore message events that don't belong to an outport
+//     if (outports.findIndex((elt) => elt.tag === ev.tag) < 0) return;
 
-    // Message events have a tag as well as a payload
-    console.log(`${ev.tag}: ${ev.payload}`);
+//     // Message events have a tag as well as a payload
+//     console.log(`${ev.tag}: ${ev.payload}`);
 
-    document.getElementById(
-      "rnbo-console-readout"
-    ).innerText = `${ev.tag}: ${ev.payload}`;
-    // TOM add start
-    // if (ev.tag === "string") console.log(ev.payload);
-    // if (ev.tag === "string") stringOutput.innerHTML = innerText;
-    // TOM add end
-  });
-}
+//     document.getElementById(
+//       "rnbo-console-readout"
+//     ).innerText = `${ev.tag}: ${ev.payload}`;
+//     // TOM add start
+//     // if (ev.tag === "string") console.log(ev.payload);
+//     // if (ev.tag === "string") stringOutput.innerHTML = innerText;
+//     // TOM add end
+//   });
+// }
 
 // TOM added
 function sendMessageToInport(device, inportTag, values) {
