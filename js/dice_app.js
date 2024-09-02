@@ -391,7 +391,7 @@ function makeInportForm(device) {
     };
   }
 }
-
+// TOM deleted these to remove monitoring
 // function attachOutports(device) {
 //   const outports = device.outports;
 //   if (outports.length < 1) {
