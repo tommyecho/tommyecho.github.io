@@ -87,7 +87,7 @@ async function setup() {
   // makeInportForm(device);
 
   // (Optional) Attach listeners to outports so you can log messages from the RNBO patcher
-  attachOutports(device);
+  // attachOutports(device);
 
   // (NICK ADDED) Get inports and parameters for debugging
   const inports = getInports(device);
