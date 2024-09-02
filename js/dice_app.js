@@ -66,7 +66,7 @@ async function setup() {
     return;
   }
 
-  // (Optional) Load the samples
+  // (Optional) Load the samplesz
   if (dependencies.length)
     await device.loadDataBufferDependencies(dependencies);
 
