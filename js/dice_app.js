@@ -238,7 +238,7 @@ function makeSliders(device) {
 function setupString(device) {
   const stringButton = document.getElementById("string");
   const stringOutput = document.getElementsByClassName("dice-output")[0];
-  stringOutput.innerHTML = 100;
+  stringOutput.innerHTML = 5;
   // THIS WORKS shows output of dice
   device.messageEvent.subscribe((ev) => {
     // console.log(`Received message ${ev.tag}: ${ev.payload}`);
@@ -266,7 +266,7 @@ function setupString(device) {
 function setupFret(device) {
   const fretButton = document.getElementById("fret");
   const fretOutput = document.getElementsByClassName("dice-output")[1];
-  fretOutput.innerHTML = 12;
+  fretOutput.innerHTML = 5;
   // THIS WORKS shows output of dice
   device.messageEvent.subscribe((ev) => {
     // console.log(`Received message ${ev.tag}: ${ev.payload}`);
