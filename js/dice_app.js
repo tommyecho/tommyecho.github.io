@@ -115,6 +115,9 @@ async function setup() {
   setupFret(device);
   setupChordTone(device);
   setupElevator(device);
+  setupRoulette(device);
+  // setupDice(device);
+  // setupStringDice(device);
 
   // Skip if you're not using guardrails.js
   if (typeof guardrails === "function") guardrails();
@@ -234,7 +237,38 @@ function makeSliders(device) {
   });
 }
 // TOM added
+// function setupDice(device) {
+//   document.getElementById("titleButton").onclick = () => {
+//     var curr_value = document.getElementById("string").style.transform;
+//     var new_value = "rotate(720deg)";
+//     if (curr_value !== "") {
+//       var new_rotate =
+//         parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+//       new_value = "rotate(" + new_rotate + "deg)";
+//     }
+//     document.getElementById("string").style.transform = new_value;
+//     document.getElementById("string").style.transition = "1s";
+//     // document.getElementById("string").style.transform = "rotate(0deg)";
+//     // document.getElementById("string").style.transition = "1s";
+//   };
+// }
 
+// function setupStringDice(device) {
+//   document.getElementById("string").onclick = () => {
+//     var curr_value = document.getElementById("string").style.transform;
+//     var new_value = "rotate(720deg)";
+//     if (curr_value !== "") {
+//       var new_rotate =
+//         parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+//       new_value = "rotate(" + new_rotate + "deg)";
+//     }
+//     document.getElementById("string").style.transform = new_value;
+//     document.getElementById("string").style.transition = "1s";
+//     // document.getElementById("string").style.transform = "rotate(0deg)";
+//     // document.getElementById("string").style.transition = "1s";
+//   };
+// }
+// end of new roulette dice spin
 function setupString(device) {
   const stringButton = document.getElementById("string");
   const stringOutput = document.getElementsByClassName("dice-output")[0];
@@ -253,6 +287,15 @@ function setupString(device) {
     //   stringButton.checked ? [1] : [0]
     // );
     // device.scheduleEvent(messageEvent);
+    var curr_value = document.getElementById("string").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("string").style.transform = new_value;
+    document.getElementById("string").style.transition = "1s";
     //OR
     sendMessageToInport(device, "string_button", "1");
   };
@@ -281,6 +324,16 @@ function setupFret(device) {
     //   stringButton.checked ? [1] : [0]
     // );
     // device.scheduleEvent(messageEvent);
+    var curr_value = document.getElementById("fret").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("fret").style.transform = new_value;
+    document.getElementById("fret").style.transition = "1s";
+
     //OR
     sendMessageToInport(device, "fret_button", "1");
   };
@@ -309,6 +362,15 @@ function setupChordTone(device) {
     //   stringButton.checked ? [1] : [0]
     // );
     // device.scheduleEvent(messageEvent);
+    var curr_value = document.getElementById("chord_tone").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("chord_tone").style.transform = new_value;
+    document.getElementById("chord_tone").style.transition = "1s";
     //OR
     sendMessageToInport(device, "chord_tone_button", "1");
   };
@@ -326,7 +388,7 @@ function setupElevator(device) {
     "Octave",
     "Drop 2",
     "Drop 3",
-    "Drop 2 and 4"
+    "Drop 2-4"
   );
   elevatorOutput.innerHTML = "Drop 2";
   // THIS WORKS shows output of dice
@@ -350,6 +412,77 @@ function setupElevator(device) {
   // const toggleState = getParameter(device, "transport_toggle");
   // tempoToggle.checked = toggleState.value === 1;
 }
+// start of Roulette Title button
+function setupRoulette(device) {
+  const rouletteButton = document.getElementById("titleButton");
+  const stringOutput = document.getElementsByClassName("dice-output")[0];
+  const fretOutput = document.getElementsByClassName("dice-output")[1];
+  const chordToneOutput = document.getElementsByClassName("dice-output")[2];
+  // const elevatorOutput = document.getElementsByClassName("dice-output")[3];
+  const diceSpin = document.getElementsByClassName("dice-image")[0];
+  const chordToneArray = new Array("Root", "Third", "Fifth", "Sixth");
+  // stringOutput.innerHTML = 5;
+  // THIS WORKS shows output of dice
+  device.messageEvent.subscribe((ev) => {
+    // console.log(`Received message ${ev.tag}: ${ev.payload}`);
+
+    if (ev.tag === "string") stringOutput.innerHTML = ev.payload;
+
+    if (ev.tag === "fret") fretOutput.innerHTML = ev.payload;
+    if (ev.tag === "chord_tone")
+      chordToneOutput.innerHTML = chordToneArray[ev.payload - 1];
+  });
+  // TOM add stop
+  rouletteButton.onclick = () => {
+    // const messageEvent = new RNBO.MessageEvent(
+    //   RNBO.TimeNow,
+    //   "transport_toggle",
+    //   stringButton.checked ? [1] : [0]
+    // );
+    // device.scheduleEvent(messageEvent);
+    //OR
+    sendMessageToInport(device, "string_button", "1");
+    sendMessageToInport(device, "fret_button", "1");
+    sendMessageToInport(device, "chord_tone_button", "1");
+    // sendMessageToInport(device, "elevator_button", "1");
+    // start Dice Spin for one element
+    var curr_value = document.getElementById("string").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("string").style.transform = new_value;
+    document.getElementById("string").style.transition = "1s";
+    // end dice spin for one element
+    // start Dice Spin for one element
+    var curr_value = document.getElementById("fret").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("fret").style.transform = new_value;
+    document.getElementById("fret").style.transition = "1s";
+    // end dice spin for one element
+    // start Dice Spin for one element
+    var curr_value = document.getElementById("chord_tone").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("chord_tone").style.transform = new_value;
+    document.getElementById("chord_tone").style.transition = "1s";
+    // end dice spin for one element
+  };
+  // const toggleState = getParameter(device, "transport_toggle");
+  // tempoToggle.checked = toggleState.value === 1;
+}
+// end roulette title button
 // end of "TOM ADD"
 function makeInportForm(device) {
   const idiv = document.getElementById("rnbo-inports");

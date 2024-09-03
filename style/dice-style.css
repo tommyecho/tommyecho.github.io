@@ -26,9 +26,30 @@ body {
     z-index: -1;
 
 }
+#titleButton {
+    background: none;
+    border: black;
+    font-size: 25px;
+    color: #fffbfb;
+height:100%;
+width:100%;
+/* display: flex;
+flex-direction: row-reverse;
+flex-grow: 0;
+align-items: center;
+justify-content: center; */
+margin: 5px;
+}
 
+#titleButton:hover {
+    color: #D064A0;
+}
+#titleButton:active {
+    color: #984472;
+}
 
 h2, em {
+    
     width: 100%;
 }
 .text {
@@ -116,6 +137,8 @@ h2, em {
     border-radius: 5px;
 }
 .dice-image {
+    /* width: 100px;
+    height: 100px; */
     transform: rotate(2turn);
     -webkit-transform: rotate(2turn);
     -moz-transform: rotate(2turn);
