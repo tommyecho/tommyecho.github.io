@@ -2,6 +2,13 @@ html, body {
     margin: 0;
     padding: 0;
 }
+body {
+    background: linear-gradient(45deg, rgb(148, 146, 146), rgb(7, 8, 8));
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+  }
+
 /* * {box-sizing: content-box; 
     -moz-box-sizing: content-box;
     -webkit-box-sizing: content-box;
@@ -17,12 +24,16 @@ html, body {
 #background {
     position: absolute;
     z-index: -1;
+
 }
+
 
 h2, em {
     width: 100%;
 }
-
+.text {
+    color: #fffbfb;
+  }
 #rnbo-root {
     margin: auto;
     max-width: 540px;
@@ -98,8 +109,9 @@ h2, em {
 .dice-output {
     width: 75px;
     text-align: center;
+    color: #ddd9d9;
     border-width: 1px;
-    border-color: black;
+    border-color: #ddd9d9;
     border-style: solid;
     border-radius: 5px;
 }

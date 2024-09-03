@@ -12,10 +12,10 @@
     <title>Jazz Roulette</title>
   </head>
 
-  <body>
+  <body style="background-color: #474852;">
     <div id="main-content" class="rounded">
-      <h1 id="main-title">Jazz Roulette</h1>
-      <h2 id="sub-title">Roll the Dice and Practice</h2>
+      <h1 id="main-title" class="text">Jazz Roulette</h1>
+      <h2 id="sub-title"class="text">Roll the Dice and Practice</h2>
 
       <div id="dice" class="row">
         <div class="column">
@@ -42,7 +42,9 @@
             onclick="alert('do not fret!')"
             value="Fret"
             class="dice-image"
+
           />
+
         </div>
         <div class="column">
           <!-- <label for="chord_tone"></label> -->
@@ -73,16 +75,16 @@
     </div>
         <div id="dice-output-container" class="row">
             <div class="column">  
-        <label for="string" class="dice-output">4</label> String
+        <label for="string" class="dice-output">4</label> <label style="color: #ddd9d9">String</label>
     </div>
     <div class="column"> 
-          <label for="fret" class="dice-output">8</label>Fret
+          <label for="fret" class="dice-output">8</label><label style="color: #ddd9d9">Fret</label>
         </div>
         <div class="column"> 
-          <label for="chord_tone" class="dice-output">Root</label>Chord Tone
+          <label for="chord_tone" class="dice-output">Root</label><label style="color: #ddd9d9">Chord Tone</label>
         </div>
         <div class="column"> 
-          <label for="elevator" class="dice-output">Shell</label> Elevator
+          <label for="elevator" class="dice-output">Shell</label> <label style="color: #ddd9d9">Elevator</label>
         </div>
       </div>
       </div>
