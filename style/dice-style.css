@@ -64,6 +64,19 @@ h2, em {
 .rounded {
     border-radius: 5px;
 }
+/* .rotate {
+    animation: rotation 8s infinite linear;
+  }
+  
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  } */
+
 
 .column {
     display: flex;
@@ -90,7 +103,51 @@ h2, em {
     border-style: solid;
     border-radius: 5px;
 }
+.dice-image {
+    transform: rotate(2turn);
+    -webkit-transform: rotate(2turn);
+    -moz-transform: rotate(2turn);
+    transition: transform 1s;
+    -webkit-transition: transform 1s;
+    -moz-transition: transform 1s;
+    transition-timing-function: ease-out;
+    -webkit-transition-timing-function: ease-out;
+    -moz-transition-timing-function: ease-out;
+    
+  }
 
+.dice-image:active {
+    transform: rotate(0deg);
+    transition:  0s;
+  }
+/* .dice-image {
+transition: all 2s;
+transition-timing-function: ease-in-out;
+
+}
+.dice-image:active {
+ transform: rotate(45deg)   
+} */
+
+/* .dice-image {
+    -webkit-transition-duration: 1s;
+    -moz-transition-duration: 1s;
+    -o-transition-duration: 1s;
+     transition-duration: 1s;
+     -webkit-transition-timing-function: ease-in-out;
+     -moz-transition-timing-function: ease-in-out;
+     -o-animation-timing-function: ease-in-out;
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    -o-transition-property: -o-transform;
+     transition-property: transform;
+}
+
+.dice-image:active {
+   transform: rotate(1000deg);
+   -webkit-transform: rotate(1000deg);
+   -ms-transform: rotate(1000deg); */
+}
 #main-content {
     display:flex;
     flex-direction: column;
