@@ -383,6 +383,7 @@ function setupElevator(device) {
   const elevatorButton = document.getElementById("elevator");
   const elevatorOutput = document.getElementsByClassName("dice-output")[3];
   const elevatorArray = new Array(
+    "Unison",
     "Third",
     "Triad",
     "Shell",
