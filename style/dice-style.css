@@ -2,6 +2,8 @@ html, body {
     margin: 0;
     padding: 0;
 }
+
+/* trouble uploading */
 body {
     background: linear-gradient(45deg, rgb(148, 146, 146), rgb(7, 8, 8));
     background-repeat: no-repeat;
