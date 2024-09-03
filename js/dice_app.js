@@ -287,6 +287,9 @@ function setupString(device) {
     //   stringButton.checked ? [1] : [0]
     // );
     // device.scheduleEvent(messageEvent);
+    //OR
+    sendMessageToInport(device, "string_button", "1");
+    // beginning of new dice spin
     var curr_value = document.getElementById("string").style.transform;
     var new_value = "rotate(720deg)";
     if (curr_value !== "") {
@@ -296,8 +299,6 @@ function setupString(device) {
     }
     document.getElementById("string").style.transform = new_value;
     document.getElementById("string").style.transition = "1s";
-    //OR
-    sendMessageToInport(device, "string_button", "1");
   };
   // const toggleState = getParameter(device, "transport_toggle");
   // tempoToggle.checked = toggleState.value === 1;
@@ -408,6 +409,16 @@ function setupElevator(device) {
     // device.scheduleEvent(messageEvent);
     //OR
     sendMessageToInport(device, "elevator_button", "1");
+    // beginning of new dice spin
+    var curr_value = document.getElementById("elevator").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("elevator").style.transform = new_value;
+    document.getElementById("elevator").style.transition = "1s";
   };
   // const toggleState = getParameter(device, "transport_toggle");
   // tempoToggle.checked = toggleState.value === 1;
@@ -431,6 +442,8 @@ function setupRoulette(device) {
     if (ev.tag === "fret") fretOutput.innerHTML = ev.payload;
     if (ev.tag === "chord_tone")
       chordToneOutput.innerHTML = chordToneArray[ev.payload - 1];
+    if (ev.tag === "elevator")
+      elevatorOutput.innerHTML = elevatorArray[ev.payload - 1];
   });
   // TOM add stop
   rouletteButton.onclick = () => {
@@ -444,6 +457,7 @@ function setupRoulette(device) {
     sendMessageToInport(device, "string_button", "1");
     sendMessageToInport(device, "fret_button", "1");
     sendMessageToInport(device, "chord_tone_button", "1");
+    sendMessageToInport(device, "elevator_button", "1");
     // sendMessageToInport(device, "elevator_button", "1");
     // start Dice Spin for one element
     var curr_value = document.getElementById("string").style.transform;
@@ -477,6 +491,17 @@ function setupRoulette(device) {
     }
     document.getElementById("chord_tone").style.transform = new_value;
     document.getElementById("chord_tone").style.transition = "1s";
+    // end dice spin for one element
+    // start Dice Spin for one element
+    var curr_value = document.getElementById("elevator").style.transform;
+    var new_value = "rotate(720deg)";
+    if (curr_value !== "") {
+      var new_rotate =
+        parseInt(curr_value.replace("rotate(", "").replace(")", "")) + 720;
+      new_value = "rotate(" + new_rotate + "deg)";
+    }
+    document.getElementById("elevator").style.transform = new_value;
+    document.getElementById("elevator").style.transition = "1s";
     // end dice spin for one element
   };
   // const toggleState = getParameter(device, "transport_toggle");
